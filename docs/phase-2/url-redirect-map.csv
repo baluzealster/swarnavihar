@@ -1,0 +1,69 @@
+old_url,new_url,action,note
+/,/,keep,home
+/service/post-operative-care-in-pune/,/service/post-operative-care-in-pune/,keep,service
+/service/assisted-living-care/,/service/assisted-living-care/,keep,service
+/service/paralysis-care-centre-in-pune/,/service/paralysis-care-centre-in-pune/,keep,service
+/service/hospice-palliative-care-in-pune/,/service/hospice-palliative-care-in-pune/,keep,service
+/service/geriatric-care-in-pune/,/service/geriatric-care-in-pune/,keep,service
+/service/dementia-care-in-pune/,/service/dementia-care-in-pune/,keep,service
+/service/,/service/,keep,page
+/contact/,/contact/,keep,page
+/blog/,/blog/,keep,page
+/about/,/about/,keep,page
+/facilities/,/facilities/,keep,page
+/gallery/,/gallery/,keep,page
+/branches/,/branches/,keep,page
+/testimonials/,/testimonials/,keep,page
+/events/,/gallery/,301,events merged into gallery
+/category/uncategorized/,/blog/,301,category
+/category/blog/,/blog/,301,category
+/service/dementia-care/,/service/dementia-care-in-pune/,301,broken link seen on live home page
+/monthly-cost-of-old-age-homes-in-pune-what-you-should-know-before-choosing/,/monthly-cost-of-old-age-homes-in-pune-what-you-should-know-before-choosing/,keep,blog post (slug preserved at root)
+/choosing-the-right-senior-citizen-home-in-pune-a-complete-guide/,/choosing-the-right-senior-citizen-home-in-pune-a-complete-guide/,keep,blog post (slug preserved at root)
+/why-private-homes-are-ideal-for-personalized-elderly-care/,/why-private-homes-are-ideal-for-personalized-elderly-care/,keep,blog post (slug preserved at root)
+/trusted-vruddhashram-in-pune-swarnavihar-old-age-homes/,/trusted-vruddhashram-in-pune-swarnavihar-old-age-homes/,keep,blog post (slug preserved at root)
+/home-care-guide-for-dementia-patients-by-swarnavihar/,/home-care-guide-for-dementia-patients-by-swarnavihar/,keep,blog post (slug preserved at root)
+/nursing-homes-vs-assisted-living-key-differences/,/nursing-homes-vs-assisted-living-key-differences/,keep,blog post (slug preserved at root)
+/best-paralysis-rehabilitation-centre-in-pune-your-guide/,/best-paralysis-rehabilitation-centre-in-pune-your-guide/,keep,blog post (slug preserved at root)
+/a-day-in-the-life-of-a-resident-at-swarnavihar-old-age-homes-in-pune/,/a-day-in-the-life-of-a-resident-at-swarnavihar-old-age-homes-in-pune/,keep,blog post (slug preserved at root)
+/navigating-dementia-care-in-punes-evolving-healthcare-landscape/,/navigating-dementia-care-in-punes-evolving-healthcare-landscape/,keep,blog post (slug preserved at root)
+/swarnavihar-old-age-homes-empowering-aging-gracefully-in-2023/,/swarnavihar-old-age-homes-empowering-aging-gracefully-in-2023/,keep,blog post (slug preserved at root)
+/swarnavihar-old-age-homes-a-comprehensive-guide-to-choosing-the-best-nursing-home-in-pune-for-your-loved-ones/,/swarnavihar-old-age-homes-a-comprehensive-guide-to-choosing-the-best-nursing-home-in-pune-for-your-loved-ones/,keep,blog post (slug preserved at root)
+/swarnavihar-old-age-homes-your-sanctuary-of-care-and-compassion/,/swarnavihar-old-age-homes-your-sanctuary-of-care-and-compassion/,keep,blog post (slug preserved at root)
+/how-old-age-homes-in-pune-are-adapting-to-changing-times/,/how-old-age-homes-in-pune-are-adapting-to-changing-times/,keep,blog post (slug preserved at root)
+/what-is-the-difference-between-palliative-care-and-hospice/,/what-is-the-difference-between-palliative-care-and-hospice/,keep,blog post (slug preserved at root)
+/celebrating-festivals-at-swarnavihar-old-age-homes-keeping-traditions-alive/,/celebrating-festivals-at-swarnavihar-old-age-homes-keeping-traditions-alive/,keep,blog post (slug preserved at root)
+/the-importance-of-post-operative-care-with-swarnavihar-old-age-homes/,/the-importance-of-post-operative-care-with-swarnavihar-old-age-homes/,keep,blog post (slug preserved at root)
+/understanding-the-monthly-cost-of-old-age-homes-in-pune/,/understanding-the-monthly-cost-of-old-age-homes-in-pune/,keep,blog post (slug preserved at root)
+/elevating-recovery-unveiling-the-excellence-of-post-operative-nursing-care-at-swarnavihar/,/elevating-recovery-unveiling-the-excellence-of-post-operative-nursing-care-at-swarnavihar/,keep,blog post (slug preserved at root)
+/comprehensive-paralysis-care-for-the-elderly-swarnavihars-holistic-approach/,/comprehensive-paralysis-care-for-the-elderly-swarnavihars-holistic-approach/,keep,blog post (slug preserved at root)
+/geriatric-care-in-pune-compassionate-support-at-swarnavihar/,/geriatric-care-in-pune-compassionate-support-at-swarnavihar/,keep,blog post (slug preserved at root)
+/geriatric-care-tips-for-elderlies-your-loved-ones-at-old-age-homes-for-a-better-life-2/,/geriatric-care-tips-for-elderlies-your-loved-ones-at-old-age-homes-for-a-better-life-2/,keep,blog post (slug preserved at root)
+/best-tips-to-take-care-of-dementia-patients/,/best-tips-to-take-care-of-dementia-patients/,keep,blog post (slug preserved at root)
+/geriatric-care-tips-for-elderlies-your-loved-ones-at-old-age-homes-for-a-better-life/,/geriatric-care-tips-for-elderlies-your-loved-ones-at-old-age-homes-for-a-better-life/,keep,blog post (slug preserved at root)
+/comprehensive-post-surgery-care-in-pune-your-guide-by-swarnavihar-old-age-homes/,/comprehensive-post-surgery-care-in-pune-your-guide-by-swarnavihar-old-age-homes/,keep,blog post (slug preserved at root)
+/understanding-the-monthly-cost-of-old-age-homes-in-pune-a-guide-by-swarnavihar-old-age-homes/,/understanding-the-monthly-cost-of-old-age-homes-in-pune-a-guide-by-swarnavihar-old-age-homes/,keep,blog post (slug preserved at root)
+/welcome-to-swarnavihar-old-age-homes-enhancing-geriatric-care-in-pune/,/welcome-to-swarnavihar-old-age-homes-enhancing-geriatric-care-in-pune/,keep,blog post (slug preserved at root)
+/significant-role-of-communication-in-dementia-care/,/significant-role-of-communication-in-dementia-care/,keep,blog post (slug preserved at root)
+/the-vital-role-of-hospice-and-palliative-care-services-in-punes-old-age-homes/,/the-vital-role-of-hospice-and-palliative-care-services-in-punes-old-age-homes/,keep,blog post (slug preserved at root)
+/nurturing-comfort-and-care-a-glimpse-into-swarnavihar-old-age-homes-in-pune/,/nurturing-comfort-and-care-a-glimpse-into-swarnavihar-old-age-homes-in-pune/,keep,blog post (slug preserved at root)
+/how-swarnavihar-oldage-homes-ensures-holistic-care-for-the-elderly/,/how-swarnavihar-oldage-homes-ensures-holistic-care-for-the-elderly/,keep,blog post (slug preserved at root)
+/how-can-senior-citizens-improve-their-health-swarnavihar-oldage-homes/,/how-can-senior-citizens-improve-their-health-swarnavihar-oldage-homes/,keep,blog post (slug preserved at root)
+/what-activities-do-you-engage-in-at-the-assisted-living-facility-swarnavihar-oldage-homes/,/what-activities-do-you-engage-in-at-the-assisted-living-facility-swarnavihar-oldage-homes/,keep,blog post (slug preserved at root)
+/hospice-and-palliative-care-in-pune-a-compassionate-approach-by-swarnavihar-oldage-homes/,/hospice-and-palliative-care-in-pune-a-compassionate-approach-by-swarnavihar-oldage-homes/,keep,blog post (slug preserved at root)
+/elderly-care-how-to-provide-compassionate-support/,/elderly-care-how-to-provide-compassionate-support/,keep,blog post (slug preserved at root)
+/hospice-care-and-palliative-care-whats-the-difference/,/hospice-care-and-palliative-care-whats-the-difference/,keep,blog post (slug preserved at root)
+/how-to-choose-the-right-assisted-care-center-a-comprehensive-guide/,/how-to-choose-the-right-assisted-care-center-a-comprehensive-guide/,keep,blog post (slug preserved at root)
+/how-can-senior-citizens-improve-their-health/,/how-can-senior-citizens-improve-their-health/,keep,blog post (slug preserved at root)
+/navigating-dementia-care-in-pune-insights-from-leading-dementia-care-homes/,/navigating-dementia-care-in-pune-insights-from-leading-dementia-care-homes/,keep,blog post (slug preserved at root)
+/swarnavihar-old-age-homes-your-trusted-partner-for-post-surgery-recovery-in-pune/,/swarnavihar-old-age-homes-your-trusted-partner-for-post-surgery-recovery-in-pune/,keep,blog post (slug preserved at root)
+/how-to-choose-old-age-homes-in-pune-for-your-loved-ones/,/how-to-choose-old-age-homes-in-pune-for-your-loved-ones/,keep,blog post (slug preserved at root)
+/indispensable-role-of-physiotherapy-in-treating-curing-paralysis/,/indispensable-role-of-physiotherapy-in-treating-curing-paralysis/,keep,blog post (slug preserved at root)
+/essential-tips-to-opt-for-best-elderly-care-homes-for-loved-ones/,/essential-tips-to-opt-for-best-elderly-care-homes-for-loved-ones/,keep,blog post (slug preserved at root)
+/busting-some-common-myths-about-old-age-homes/,/busting-some-common-myths-about-old-age-homes/,keep,blog post (slug preserved at root)
+/9-valid-reasons-to-opt-for-in-home-care-for-your-elder-loved-ones/,/9-valid-reasons-to-opt-for-in-home-care-for-your-elder-loved-ones/,keep,blog post (slug preserved at root)
+/top-3-things-on-the-lookout-for-residents-from-senior-living-homes/,/top-3-things-on-the-lookout-for-residents-from-senior-living-homes/,keep,blog post (slug preserved at root)
+/5-things-one-is-mostly-unaware-of-post-operative-elderly-care/,/5-things-one-is-mostly-unaware-of-post-operative-elderly-care/,keep,blog post (slug preserved at root)
+/swarnavihar-old-age-homes-redefines-geriatric-care-services-in-pune/,/swarnavihar-old-age-homes-redefines-geriatric-care-services-in-pune/,keep,blog post (slug preserved at root)
+/providing-compassionate-hospice-and-palliative-care-swarnavihar-old-age-homes-leads-the-way/,/providing-compassionate-hospice-and-palliative-care-swarnavihar-old-age-homes-leads-the-way/,keep,blog post (slug preserved at root)
+swarnavihar.org/*,swarnaviharoldagehomes.com/,301,whole secondary domain → home (it is a one-page site)

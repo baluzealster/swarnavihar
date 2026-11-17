@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* Metric-matched fallback for Atkinson Hyperlegible Next (measured against Arial/Liberation Sans).
+   Keeps line breaks and heights the same before and after the web font loads (no layout shift). */
+@font-face {
+  font-family: "Atkinson Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  size-adjust: 98.6%;
+  ascent-override: 99.4%;
+  descent-override: 32.4%;
+  line-gap-override: 0%;
+}
+
+/* ------------------------------------------------------------------
+   Swarnavihar design tokens
+   Every colour, font, size and radius used on the site comes from here.
+   See docs/design-system.md for usage rules.
+------------------------------------------------------------------- */
+@theme {
+  /* Colour */
+  --color-cream: #f7f2e7;        /* page background */
+  --color-paper: #ffffff;        /* cards, forms, header */
+  --color-ink: #1e2b24;          /* body text */
+  --color-muted: #4f5d55;        /* secondary text — 6.2:1 on cream */
+  --color-sage: #33503f;         /* headings, primary buttons */
+  --color-sage-dark: #26402f;    /* primary hover */
+  --color-sage-mid: #5d7a4c;     /* olive-green decoration / large text only */
+  --color-mist: #e3eadf;         /* tinted bands, photo frames */
+  --color-meadow: #c8d1a4;       /* deeper olive band for the home hero — muted text 5.3:1 */
+  --color-olive: #3c4a24;        /* deep olive bands — on-sage text 8.4:1 */
+  --color-brass: #b38b45;        /* decoration ONLY: nameplate edges, rules */
+  --color-brass-deep: #8a6a2f;   /* large numerals, icons — 4.5:1 on cream */
+  --color-brass-light: #d9c08f;  /* icons on deep sage */
+  --color-line: #e6dfcf;         /* hairlines on cream */
+  --color-line-strong: #d3cab5;  /* dividers, form borders on paper */
+  --color-on-sage: #eef2ec;      /* text on deep green 10.1:1, on olive 8.4:1 */
+  --color-on-sage-muted: #c9d4bc; /* secondary text on deep green 7.4:1, on olive 6.2:1 */
+
+  /* Type */
+  --font-serif: var(--font-literata, "Literata"), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-atkinson, "Atkinson Hyperlegible Next"), "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-display: clamp(2.5rem, 1.55rem + 3.9vw, 4.25rem);
+  --text-display--line-height: 1.06;
+  --text-h2: clamp(1.95rem, 1.45rem + 2vw, 2.85rem);
+  --text-h2--line-height: 1.12;
+  --text-h3: 1.45rem;
+  --text-h3--line-height: 1.25;
+  --text-lead: clamp(1.2rem, 1.1rem + 0.4vw, 1.375rem);
+  --text-lead--line-height: 1.55;
+  --text-body: clamp(1.125rem, 1.09rem + 0.15vw, 1.1875rem);
+  --text-body--line-height: 1.65;
+  --text-small: 1rem;
+  --text-small--line-height: 1.55;
+
+  /* Shape */
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --radius-photo: 4px;
+  --radius-plate: 2px;
+
+  /* Depth (17 Nov 2026): warm, low-opacity shadows tinted with ink, never grey */
+  --shadow-soft: 0 1px 2px rgb(30 43 36 / 0.05), 0 8px 24px -8px rgb(30 43 36 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(30 43 36 / 0.06), 0 24px 48px -16px rgb(30 43 36 / 0.22);
+
+  /* Layout */
+  --container-site: 75rem;   /* 1200px */
+  --container-read: 40rem;   /* ~68 characters of body text */
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    color: var(--color-sage);
+    text-wrap: balance;
+    overflow-wrap: anywhere; /* also shrinks min-content, so grids can't be forced wider */
+    hyphens: auto; /* long words in big titles must never push a 320 px phone sideways */
+  }
+  p { text-wrap: pretty; }
+  a { text-underline-offset: 0.2em; }
+  :focus-visible {
+    outline: 3px solid var(--color-sage);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .on-sage :focus-visible { outline-color: var(--color-paper); }
+  summary { cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+@layer components {
+  /* Placeholder marker — visible in development so dummy data is never missed. */
+  .show-placeholders [data-placeholder="true"] {
+    outline: 2px dashed var(--color-brass-deep);
+    outline-offset: 3px;
+  }
+  /* The brass house nameplate — reserved for branch names only. */
+  .nameplate {
+    display: inline-block;
+    background: var(--color-cream);
+    border: 1px solid var(--color-brass);
+    outline: 1px solid var(--color-brass);
+    outline-offset: 4px;
+    border-radius: var(--radius-plate);
+    text-align: center;
+  }
+}
+
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: reveal 0.28s ease-out;
+  }
+}
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(6px); }
+}
+
+/* Scroll reveal (ScrollReveal.tsx). Only elements that start below the fold are hidden, and
+   only once JavaScript has marked them, so content is never lost without JS and the first
+   screen (LCP) is never delayed. Off under prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  .reveal-in {
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+/* Homepage "Glimpses" carousel: the 2-second progress bar. */
+@keyframes glimpses-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Lift-on-hover for cards. */
+@utility card-lift {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  &:hover { box-shadow: var(--shadow-lift); transform: translateY(-3px); }
+  @media (prefers-reduced-motion: reduce) { &:hover { transform: none; } }
+}
+
+/* Thin brass rule used above section titles on photo-led bands. */
+@utility brass-rule {
+  &::before {
+    content: "";
+    display: block;
+    width: 3.5rem;
+    height: 2px;
+    margin-bottom: 1.25rem;
+    background: var(--color-brass);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Dark bands (tone "sage" and "olive"). Deliberately outside @layer so
+   these win over utility classes: light secondary text and icons on the
+   dark background, and normal dark text again inside white cards.
+------------------------------------------------------------------- */
+.on-sage .text-muted:not(.bg-paper *) { color: var(--color-on-sage-muted); }
+.on-sage .text-brass-deep:not(.bg-paper *) { color: var(--color-brass-light); }
+.on-sage .border-sage\/25:not(.bg-paper *) { border-color: rgb(238 242 236 / 0.25); }
+.on-sage .bg-paper { color: var(--color-ink); }
+.on-sage .bg-paper :is(h2, h3) { color: var(--color-sage); }
+
+/* Two neighbouring bands of the same colour (e.g. a mist section followed by the mist enquiry
+   band) would otherwise stack two full paddings into one big gap: drop the second band's top
+   padding and mark the join with a hairline instead. */
+section.bg-mist + section.bg-mist,
+section.bg-cream + section.bg-cream,
+section.bg-paper + section.bg-paper {
+  padding-top: 0;
+}
+section.bg-mist + section.bg-mist > div,
+section.bg-cream + section.bg-cream > div,
+section.bg-paper + section.bg-paper > div {
+  border-top: 1px solid var(--color-line-strong);
+  padding-top: 3rem;
+}
+@media (min-width: 64rem) {
+  section.bg-mist + section.bg-mist > div,
+  section.bg-cream + section.bg-cream > div,
+  section.bg-paper + section.bg-paper > div { padding-top: 4rem; }
+}

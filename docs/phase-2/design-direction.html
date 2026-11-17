@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swarnavihar: design direction (Phase 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F2E7; --paper:#FFFFFF; --ink:#1E2B24; --muted:#4F5D55;
+  --sage:#33503F; --sage-mid:#6B8A72; --mist:#E3EADF;
+  --gold:#B38B45; --gold-deep:#8A6A2F;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --measure:68ch;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 1.1875rem/1.6 var(--sans)}
+img{max-width:100%}
+a{color:var(--sage);text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;color:var(--sage);margin:0}
+h1{font-size:clamp(2.4rem,5.2vw,3.75rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.8rem,3.2vw,2.5rem)}
+h3{font-size:1.4rem}
+p{max-width:var(--measure);margin:0 0 1em}
+.lead{font-size:1.3rem;color:var(--muted)}
+
+/* Doc chrome for the style tile part */
+.doc-head{border-bottom:1px solid #d9d1bf;padding:28px 0 20px}
+.doc-head p{color:var(--muted);margin:.4em 0 0}
+.tile{padding:48px 0;border-bottom:1px solid #d9d1bf}
+.tile h2{margin-bottom:24px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.sw{background:var(--paper);border:1px solid #e3dccb;border-radius:10px;overflow:hidden;font-size:.95rem}
+.sw div{height:84px}
+.sw p{margin:10px 12px 12px;line-height:1.35}
+.sw small{color:var(--muted)}
+.typescale > *{margin-bottom:14px}
+.specimen-note{font-size:.95rem;color:var(--muted)}
+
+/* Components */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:52px;padding:0 24px;border-radius:8px;font:700 1.05rem/1 var(--sans);text-decoration:none;border:2px solid var(--sage);cursor:pointer}
+.btn-primary{background:var(--sage);color:var(--paper)}
+.btn-primary:hover{background:#26402f}
+.btn-quiet{background:transparent;color:var(--sage)}
+.btn-quiet:hover{background:var(--mist)}
+.btn-wa{background:var(--paper);color:var(--sage);border-color:#c9d6c5}
+
+/* Signature: the house nameplate */
+.plate{display:inline-block;background:var(--cream);padding:14px 22px 12px;border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:4px;border-radius:2px;text-align:center;margin:6px}
+.plate b{display:block;font:500 1.55rem/1.1 var(--serif);color:var(--sage)}
+.plate span{display:block;font-size:.95rem;color:var(--muted);margin-top:4px}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-weight:700;font-size:1rem}
+.field input,.field select{min-height:52px;font:inherit;font-size:1.05rem;padding:0 14px;border:1.5px solid #b9c3b6;border-radius:8px;background:var(--paper);color:var(--ink)}
+.field input:focus,.field select:focus{outline:3px solid var(--sage);outline-offset:1px;border-color:var(--sage)}
+.hint{font-size:.95rem;color:var(--muted)}
+
+.ph{outline:2px dashed var(--gold-deep);outline-offset:3px}
+.ph-tag{display:inline-block;font-size:.8rem;font-weight:700;color:var(--gold-deep);background:#f3ead6;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle}
+
+/* ============ Homepage mockup ============ */
+.mock{background:var(--cream)}
+.site-head{background:var(--paper);border-bottom:1px solid #e6dfcf}
+.site-head .wrap{display:flex;align-items:center;gap:28px;min-height:76px}
+.logo{font:600 1.45rem/1 var(--serif);color:var(--sage);text-decoration:none}
+.logo small{display:block;font:400 .82rem/1.3 var(--sans);color:var(--muted);margin-top:3px}
+.nav{display:flex;gap:22px;margin-left:auto;font-weight:500}
+.nav a{color:var(--ink);text-decoration:none}
+.nav a:hover{color:var(--sage);text-decoration:underline}
+.head-cta{display:flex;gap:10px}
+
+.hero{padding:64px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.hero h1{margin-bottom:20px}
+.finder{margin-top:28px;background:var(--paper);border:1px solid #e3dccb;border-radius:14px;padding:24px}
+.finder h2{font-size:1.35rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:0 18px;border-radius:999px;border:1.5px solid #b9c3b6;background:var(--cream);font:500 1.05rem var(--sans);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--sage);border-color:var(--sage);color:var(--paper)}
+.result{margin-top:20px;border-top:1px solid #ece5d5;padding-top:20px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.result .plate{margin:4px}
+.result p{margin:0 0 10px;font-size:1rem;color:var(--muted)}
+.result .actions{display:flex;flex-wrap:wrap;gap:10px}
+@media (prefers-reduced-motion:no-preference){.result.anim{animation:rise .28s ease-out}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
+
+.photo{background:var(--mist);border-radius:4px;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:20px;color:var(--sage);font-size:.95rem;border:1px solid #d3ddcf}
+.photo.wide{aspect-ratio:16/10}
+
+.proof{background:var(--paper);border-block:1px solid #e6dfcf}
+.proof .wrap{display:flex;flex-wrap:wrap;gap:12px 48px;padding-block:24px;align-items:baseline}
+.proof div{font-size:1rem;color:var(--muted)}
+.proof b{font:500 1.7rem var(--serif);color:var(--sage);margin-right:8px}
+
+section.band{padding:80px 0}
+.band.tint{background:var(--mist)}
+.section-intro{margin-bottom:36px}
+.section-intro p{margin-top:12px}
+
+.needs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--sage)}
+.needs > div{padding:24px 28px 8px 0}
+.needs > div + div{padding-left:28px;border-left:1px solid #d9d1bf}
+.needs h3{margin-bottom:6px}
+.needs p{font-size:1rem;color:var(--muted)}
+.needs ul{list-style:none;padding:0;margin:0 0 16px}
+.needs li{border-bottom:1px solid #e6dfcf}
+.needs li a{display:block;padding:11px 0;text-decoration:none;color:var(--ink);font-weight:500}
+.needs li a:hover{color:var(--sage);text-decoration:underline}
+
+.day{display:grid;grid-template-columns:110px 1fr;max-width:820px}
+.day dt{font:500 1.15rem var(--serif);color:var(--gold-deep);padding:14px 0;border-top:1px solid #cdd8c9}
+.day dd{margin:0;padding:14px 0;border-top:1px solid #cdd8c9}
+
+.houses{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.house{background:var(--paper);border:1px solid #e3dccb;border-radius:10px;padding:22px;text-align:left}
+.house .plate{margin:4px 4px 16px}
+.house address{font-style:normal;font-size:1rem;color:var(--muted);margin-bottom:14px}
+.house a.tel{font-weight:700}
+
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.steps li{counter-increment:s;border-top:2px solid var(--sage);padding-top:16px}
+.steps li::before{content:counter(s);display:block;font:500 2rem/1 var(--serif);color:var(--gold-deep);margin-bottom:10px}
+.steps b{display:block;font:500 1.25rem var(--serif);color:var(--sage);margin-bottom:6px}
+.steps p{font-size:1rem;color:var(--muted)}
+
+.callback{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.callback form{background:var(--paper);border:1px solid #e3dccb;border-radius:14px;padding:28px}
+.consent{font-size:.95rem;color:var(--muted)}
+
+.site-foot{background:var(--sage);color:#eef2ec;padding:48px 0 110px}
+.site-foot a{color:#fff}
+.site-foot .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:36px;font-size:1rem}
+.site-foot h3{color:#fff;font-size:1.15rem;margin-bottom:10px}
+
+.mbar{display:none}
+@media (max-width:900px){
+  .nav,.head-cta .btn-quiet{display:none}
+  .hero .wrap,.callback{grid-template-columns:1fr}
+  .hero{padding:36px 0 48px}
+  .hero .photo{aspect-ratio:16/9}
+  .needs,.houses,.steps{grid-template-columns:1fr}
+  .needs > div + div{padding-left:0;border-left:0;border-top:1px solid #d9d1bf}
+  .site-foot .wrap{grid-template-columns:1fr}
+  .result{grid-template-columns:1fr}
+  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid #d9d1bf;z-index:10}
+  .mbar a{min-height:62px;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none;color:var(--sage)}
+  .mbar a + a{border-left:1px solid #e6dfcf}
+  .mbar a.go{background:var(--sage);color:#fff}
+  body{font-size:1.125rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= PART A: STYLE TILE ================= -->
+<div class="wrap">
+  <header class="doc-head">
+    <h1 style="font-size:2rem">Swarnavihar design direction</h1>
+    <p>Phase 2 proposal for sign-off. Part A is the style tile, Part B a homepage mockup. Dashed outlines mark placeholder content from the fact sheet.</p>
+  </header>
+
+  <section class="tile" aria-labelledby="pal">
+    <h2 id="pal">Colour</h2>
+    <div class="swatches">
+      <div class="sw"><div style="background:#F7F2E7;border-bottom:1px solid #e3dccb"></div><p><b>Rice cream</b> #F7F2E7<br><small>Page background</small></p></div>
+      <div class="sw"><div style="background:#FFFFFF;border-bottom:1px solid #e3dccb"></div><p><b>Paper</b> #FFFFFF<br><small>Forms, cards, header</small></p></div>
+      <div class="sw"><div style="background:#33503F"></div><p><b>Deep sage</b> #33503F<br><small>Headings, buttons. 8.0:1 on cream</small></p></div>
+      <div class="sw"><div style="background:#E3EADF"></div><p><b>Sage mist</b> #E3EADF<br><small>Tinted sections, photo frames</small></p></div>
+      <div class="sw"><div style="background:#B38B45"></div><p><b>Brass</b> #B38B45<br><small>Decoration only: nameplate edges, rules</small></p></div>
+      <div class="sw"><div style="background:#1E2B24"></div><p><b>Ink</b> #1E2B24<br><small>Body text. 13.2:1 on cream</small></p></div>
+    </div>
+  </section>
+
+  <section class="tile" aria-labelledby="typ">
+    <h2 id="typ">Type</h2>
+    <div class="typescale">
+      <h1>Care for your parents, close to where you live</h1>
+      <h2>What does your parent need?</h2>
+      <h3>Dementia and Alzheimer's care</h3>
+      <p class="lead">Lead text, 21px. For the one sentence under a heading that a worried son or daughter will actually read.</p>
+      <p>Body text is 19px on desktop and 18px on phones, at 1.6 line height and no more than 68 characters a line. Atkinson Hyperlegible Next separates easily confused letters like I, l and 1, which matters when the reader is 75 and using a tablet.</p>
+      <p class="specimen-note">Headings: Literata 500. Body: Atkinson Hyperlegible Next 400/700. No all-caps labels, no italics for emphasis. Pinch-zoom always allowed.</p>
+    </div>
+  </section>
+
+  <section class="tile" aria-labelledby="cmp">
+    <h2 id="cmp">Components</h2>
+    <p><a class="btn btn-primary" href="#">Book a visit</a>&nbsp; <a class="btn btn-quiet" href="#">Call +91 00000 00000</a>&nbsp; <a class="btn btn-wa" href="#">WhatsApp us</a></p>
+    <p class="hint">Buttons are at least 52px tall and named for what happens next.</p>
+    <h3 style="margin:28px 0 12px">The house nameplate (signature element)</h3>
+    <p>Every Swarnavihar branch already has a house name. We show it the way Pune homes do: a brass-edged plate at the gate. This is used only for branch names, so it always means "a real place you can visit".</p>
+    <span class="plate"><b>Ananda Nivas</b><span>Baner</span></span>
+    <span class="plate"><b>Akshaya Nivas</b><span>Wakad</span></span>
+    <span class="plate ph"><b>Anugraha Nivas</b><span>Pimple Nilakh</span></span>
+    <div style="max-width:420px;margin-top:28px">
+      <div class="field"><label for="d-phone">Your phone number</label><input id="d-phone" inputmode="numeric" placeholder="10-digit mobile"><span class="hint">We'll call you back within working hours.</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PART B: HOMEPAGE MOCKUP ================= -->
+<div class="mock" id="mock">
+  <header class="site-head">
+    <div class="wrap">
+      <a class="logo" href="#">Swarnavihar<small>Old Age Homes, Pune</small></a>
+      <nav class="nav" aria-label="Main"><a href="#">Services</a><a href="#">Branches</a><a href="#">Facilities</a><a href="#">Admission</a><a href="#">About</a><a href="#">Blog</a></nav>
+      <div class="head-cta"><a class="btn btn-quiet ph" href="tel:+910000000000">+91 00000 00000</a><a class="btn btn-primary" href="#callback">Book a visit</a></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Care for your parents, close to where you live</h1>
+        <p class="lead">Six homes across Pune and Bengaluru with nurses, visiting doctors and physiotherapy, so you can visit often, not just on weekends.</p>
+
+        <div class="finder" aria-labelledby="finder-h">
+          <h2 id="finder-h">Which part of Pune are you in?</h2>
+          <div class="chips" role="group" aria-label="Choose your area">
+            <button class="chip" aria-pressed="true" data-k="baner">Baner, Balewadi, Pashan, Sus</button>
+            <button class="chip" aria-pressed="false" data-k="wakad">Wakad, Hinjewadi</button>
+            <button class="chip" aria-pressed="false" data-k="sinhgad">Sinhgad Road, Kothrud</button>
+            <button class="chip" aria-pressed="false" data-k="pn">Pimple Nilakh, Aundh</button>
+          </div>
+          <div class="result" id="result" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="photo ph" role="img" aria-label="Photo placeholder">Photo to be shot: a resident and her daughter on the verandah at Ananda Nivas, Baner</div>
+    </div>
+  </section>
+
+  <div class="proof ph" aria-label="Key numbers (placeholder)">
+    <div class="wrap">
+      <div><b>10+</b>years caring for Pune's elders</div>
+      <div><b>1,800+</b>families</div>
+      <div><b>6</b>homes</div>
+      <div><b>8</b>doctors on our panel</div>
+      <span class="ph-tag">Placeholder numbers, hidden in production until verified</span>
+    </div>
+  </div>
+
+  <section class="band" aria-labelledby="needs-h">
+    <div class="wrap">
+      <div class="section-intro"><h2 id="needs-h">What does your parent need?</h2><p class="lead">Start from the situation you're in. Each page explains what care looks like day to day.</p></div>
+      <div class="needs">
+        <div><h3>Everyday living</h3><p>Independent but shouldn't live alone</p>
+          <ul><li><a href="#">Residential old age home</a></li><li><a href="#">Assisted living</a></li><li><a href="#">24/7 elderly care</a></li></ul></div>
+        <div><h3>Medical and nursing</h3><p>Needs nursing, medication or a long-term condition managed</p>
+          <ul><li><a href="#">Nursing care</a></li><li><a href="#">Bedridden patient care</a></li><li><a href="#">Dementia and Alzheimer's</a></li><li><a href="#">Parkinson's care</a></li><li><a href="#">Tracheostomy and feeding tube care</a></li></ul></div>
+        <div><h3>Recovery and rehab</h3><p>Coming home from hospital, a stroke or surgery</p>
+          <ul><li><a href="#">Post-stroke rehabilitation</a></li><li><a href="#">Paralysis care</a></li><li><a href="#">Physiotherapy</a></li><li><a href="#">After a hospital stay</a></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint" aria-labelledby="day-h">
+    <div class="wrap">
+      <div class="section-intro"><h2 id="day-h">A day at Swarnavihar</h2><p class="lead">What your parent's day looks like, so there are no surprises.</p></div>
+      <dl class="day ph">
+        <dt>7:00</dt><dd>Tea, vitals check by the nurse on shift, morning medicines</dd>
+        <dt>8:30</dt><dd>Breakfast, then physiotherapy or a walk in the garden</dd>
+        <dt>12:30</dt><dd>Lunch, cooked fresh in the house kitchen, then rest</dd>
+        <dt>16:00</dt><dd>Bhajans, games, newspaper reading. Family visiting hours begin</dd>
+        <dt>19:30</dt><dd>Dinner, evening medicines, night attendant takes over</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="houses-h">
+    <div class="wrap">
+      <div class="section-intro"><h2 id="houses-h">Our homes</h2><p class="lead">Each one is a house in a residential lane, not a hospital block. Call ahead and we'll show you around any of them.</p></div>
+      <div class="houses">
+        <article class="house"><span class="plate"><b>Ananda Nivas</b><span>Baner</span></span><address>Constellation Building, Pashan–Sus Road, Baner, Pune 411045</address><a class="tel ph" href="#">+91 00000 00002</a></article>
+        <article class="house"><span class="plate"><b>Achyutha Nivas</b><span>Sus</span></span><address>Ravi Nagar, Pashan–Sus Road, Sus, Pune 411021</address><a class="tel ph" href="#">+91 00000 00003</a></article>
+        <article class="house"><span class="plate"><b>Akshaya Nivas</b><span>Wakad</span></span><address>Laxmi Sadan, Chowdhary Park, Wakad, Pune 411057</address><a class="tel ph" href="#">+91 00000 00004</a></article>
+        <article class="house"><span class="plate"><b>Amulya Nivas</b><span>Sinhgad Road</span></span><address>Narayan Baug Road, Vadgaon Budruk, Pune 411041</address><a class="tel ph" href="#">+91 00000 00001</a></article>
+        <article class="house ph"><span class="plate"><b>Anugraha Nivas</b><span>Pimple Nilakh</span></span><address>Sample Road, Pimple Nilakh, Pune 411027</address><a class="tel" href="#">+91 00000 00005</a></article>
+        <article class="house"><span class="plate"><b>Swarnavihar</b><span>Bengaluru</span></span><address>Doctors Layout, Bannerghatta Road, Gottigere, Bengaluru 560083</address><a class="tel ph" href="#">+91 00000 00006</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint" aria-labelledby="adm-h">
+    <div class="wrap">
+      <div class="section-intro"><h2 id="adm-h">How admission works</h2></div>
+      <ol class="steps ph">
+        <li><b>Call or WhatsApp</b><p>Tell us about your parent. We'll suggest the nearest home with space.</p></li>
+        <li><b>Visit the home</b><p>See the rooms and meet the people who would care for your parent.</p></li>
+        <li><b>Care assessment</b><p>Our doctor reviews medical records and agrees a care plan with you.</p></li>
+        <li><b>Move in</b><p>We help your parent settle in and keep you updated.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="callback" aria-labelledby="cb-h">
+    <div class="wrap callback">
+      <div><h2 id="cb-h">Talk to us about your parent</h2><p class="lead">Leave your number and a care coordinator will call you back. There's no obligation and no sales script.</p><p>Prefer to talk now? Call <a class="ph" href="#">+91 00000 00000</a> or <a href="#">send us a WhatsApp message</a>.</p></div>
+      <form onsubmit="return false">
+        <div class="field"><label for="cb-name">Your name</label><input id="cb-name" autocomplete="name"></div>
+        <div class="field"><label for="cb-phone">Phone number</label><input id="cb-phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile"></div>
+        <div class="field"><label for="cb-area">Nearest area</label><select id="cb-area"><option>Baner / Sus</option><option>Wakad</option><option>Sinhgad Road</option><option>Pimple Nilakh</option><option>Bengaluru</option><option>Not sure yet</option></select></div>
+        <button class="btn btn-primary" style="width:100%">Request a callback</button>
+        <p class="consent" style="margin-top:12px">We'll only use your number to talk about care. <a href="#">Privacy policy</a></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div><h3>Swarnavihar Old Age Homes</h3><p>Six homes in Pune and Bengaluru.</p><p class="ph" style="display:inline-block">+91 00000 00000<br>svoldagehomes@gmail.com</p></div>
+      <div><h3>Care</h3><p>Assisted living<br>Dementia care<br>Nursing care<br>Post-stroke rehab<br>All services</p></div>
+      <div><h3>Homes</h3><p>Baner<br>Sus<br>Wakad<br>Sinhgad Road<br>Pimple Nilakh<br>Bengaluru</p></div>
+    </div>
+  </footer>
+
+  <nav class="mbar" aria-label="Quick contact"><a href="#">Call</a><a href="#">WhatsApp</a><a class="go" href="#callback">Book a visit</a></nav>
+</div>
+
+<script>
+const H={
+  baner:{n:"Ananda Nivas",a:"Baner",t:"Pashan–Sus Road, Baner. Our Sus house, Achyutha Nivas, is nearby.",p:"+91 00000 00002"},
+  wakad:{n:"Akshaya Nivas",a:"Wakad",t:"Chowdhary Park, Wakad. Close to Hinjewadi and Pimple Saudagar.",p:"+91 00000 00004"},
+  sinhgad:{n:"Amulya Nivas",a:"Sinhgad Road",t:"Narayan Baug Road, Vadgaon Budruk. Close to Dhayari and Kothrud.",p:"+91 00000 00001"},
+  pn:{n:"Anugraha Nivas",a:"Pimple Nilakh",t:"Pimple Nilakh, close to Aundh and Sangvi.",p:"+91 00000 00005"}
+};
+const r=document.getElementById('result');
+function show(k){const h=H[k];r.innerHTML=`<span class="plate"><b>${h.n}</b><span>${h.a}</span></span><div><p>${h.t}</p><div class="actions"><a class="btn btn-primary" href="#callback">Book a visit</a><a class="btn btn-wa" href="#">WhatsApp</a></div></div>`;}
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true');r.classList.remove('anim');void r.offsetWidth;r.classList.add('anim');show(c.dataset.k);}));
+show('baner');
+</script>
+</body>
+</html>
